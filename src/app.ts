@@ -2,7 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import dotenv from 'dotenv'
 dotenv.config();
-import { AppDataSource } from "./config/database";
+import { AppDataSource } from "./config/data-source";
 import userRouter from './routes/userRoutes'
 
 const app = express();
@@ -16,13 +16,17 @@ app.get('/' , function(req, res){
 app.use("/api/auth", userRouter);
 
 
-AppDataSource.initialize()
-.then(async () => {
-    app.listen(PORT, () => {
-      console.log("Server is running on http://localhost:" + PORT);
-    });
-    console.log("Data Source has been initialized!");
-  })
-.catch((error) => console.log(error));
+// AppDataSource.initialize()
+// .then(async () => {
+//     app.listen(PORT, () => {
+//       console.log("Server is running on http://localhost:" + PORT);
+//     });
+//     console.log("Data Source has been initialized!");
+//   })
+// .catch((error) => console.log(error));
 
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
+export default app;

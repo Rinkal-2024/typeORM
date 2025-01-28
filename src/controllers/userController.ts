@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import { User } from "../entities/user";
-import { AppDataSource } from "../config/database";
+import { AppDataSource } from "../config/data-source";
 import { UserResponce } from "../dto/userDto";
 
 export class UserController {
@@ -20,7 +20,7 @@ export class UserController {
     userDataSent.name = user.name;
     userDataSent.email = user.email;
     userDataSent.role = user.role;
-    console.log(user.name , "userName ")
+    // console.log(user.name , "userName ")
     return res
 
      .status(201)
